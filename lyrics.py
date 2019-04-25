@@ -62,13 +62,10 @@ x.train(fhandle)
 
 
 
-CONSUMER_KEY = 'dRvC8ag1ljeyE0o1Tj9M9hP0e'
-CONSUMER_SECRET = 'KJjzMByktknLbBDcWA1lthMLo3wvWaZHjJ1qtwniDt3KkXj80q'
-ACCESS_KEY = '714336934085046272-KN5FtFEiOYHmETJPFD1rKR5zt7p67KG'
-ACCESS_SECRET = 'Gv3NJpGQiOe6PgeIoyuPML8kScddNbwCz7I7PpZtc4KmM'
-# NOTE: flush=True is just for running this script
-# with PythonAnywhere's always-on task.
-# More info: https://help.pythonanywhere.com/pages/AlwaysOnTasks/
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+ACCESS_KEY = ''
+ACCESS_SECRET = ''
 print('this is my twitter bot')
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -91,12 +88,8 @@ def store_last_seen_id(last_seen_id, file_name):
 
 def reply_to_tweets():
     print('retrieving and replying to tweets...', flush=True)
-    # DEV NOTE: use 1060651988453654528 for testing.
-    last_seen_id = retrieve_last_seen_id(FILE_NAME)
-    # NOTE: We need to use tweet_mode='extended' below to show
-    # all full tweets (with full_text). Without it, long tweets
-    # would be cut off.
-    mentions = api.mentions_timeline(
+        last_seen_id = retrieve_last_seen_id(FILE_NAME)
+        mentions = api.mentions_timeline(
                         last_seen_id,
                         tweet_mode='extended')
     for mention in reversed(mentions):
